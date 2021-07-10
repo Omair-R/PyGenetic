@@ -1,5 +1,5 @@
 # PyGenetic
-PyGenetic is a small project that I created to develop a better understanding of genetic algorithms, after all you can't code something you don't understand. I wanted to stop at the most basic implementation fo the algorithm, but I grew to love it, and decided to explore further. The project is still greatly under developement with many features remine unfinished, some of which are: 
+PyGenetic is a small project that I created to develop a better understanding of genetic algorithms, after all you can't code something you don't understand. I wanted to stop at the most basic implementation for the algorithm, but I grew to love it, and decided to explore further. The project is still greatly under developement with many features remine unfinished, some of which are: 
 - String, and binary arrays handling. 
 - more crossover methods. 
 - error handling and testing (I should have done them earlier I know XD)
