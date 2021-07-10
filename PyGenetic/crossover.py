@@ -1,7 +1,7 @@
 from typing import Tuple
 import numpy as np
 
-from abstracts import *
+from PyGenetic.abstracts import *
 
 
 class CrossoverDecidor(AbstractedDecidor):

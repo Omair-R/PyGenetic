@@ -1,9 +1,9 @@
 from typing import Tuple
 import numpy as np
 
-from crossover import *
-from mutation import *
-from abstracts import *
+from PyGenetic.crossover import *
+from PyGenetic.mutation import *
+from PyGenetic.abstracts import *
 
 def population_decidor(n_genes,
                         n_pool,

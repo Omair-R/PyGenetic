@@ -1,7 +1,7 @@
 import numpy as np
 
-from populations import *
-from utils import *
+from PyGenetic.populations import *
+from PyGenetic.utils import *
 
 class GA:
     """

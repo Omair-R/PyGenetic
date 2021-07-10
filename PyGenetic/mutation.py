@@ -1,6 +1,6 @@
 import numpy as np
 
-from abstracts import *
+from PyGenetic.abstracts import *
 
 class MutationDecidor(AbstractedDecidor):
     def __init__(self, mutation_type, n_genes, mutation_propability,
