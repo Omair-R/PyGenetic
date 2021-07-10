@@ -9,7 +9,7 @@ PyGenetic is a small project that I created to develop a better understanding of
 ### usage: 
 the project is not a pip package, and I am not sure if it ever will be, but you can simply clone the repository. then do something similar to: 
 
-``` 
+``` python
 import numpy as np
 from PyGenetic import genetic_algorithms as pg
 
