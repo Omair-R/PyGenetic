@@ -1,9 +1,6 @@
-from typing import Tuple
 import numpy as np
 
-from PyGenetic.crossover import *
-from PyGenetic.mutation import *
-from PyGenetic.abstracts import *
+from PyGenetic.factory import FactoryPopulation
 
 
 def population_decidor(n_genes, n_pool, n_parents, low_boundery, high_boundery,
@@ -42,7 +39,7 @@ def population_decidor(n_genes, n_pool, n_parents, low_boundery, high_boundery,
                                 mutation_type=mutation_type)
 
 
-class BinaryPopulation(AbstractPopulation):
+class BinaryPopulation(FactoryPopulation):
     def __init__(self, n_genes: int, n_pool: int, n_parents: int,
                  mutation_prop: float, crossover_type: str,
                  mutation_type: str) -> None:
@@ -59,12 +56,11 @@ class BinaryPopulation(AbstractPopulation):
         self.pool = np.random.randint(0, 2, (self.n_pool, self.n_genes))
 
 
-
-class StringPopulation(AbstractPopulation):
+class StringPopulation(FactoryPopulation):
     pass
 
 
-class OptimizationPopulation(AbstractPopulation):
+class OptimizationPopulation(FactoryPopulation):
     def __init__(self, n_genes: int, n_pool: int, n_parents: int,
                  low_boundery: int, high_boundery: int, mutation_prop: float,
                  crossover_type: str, mutation_type: str) -> None:
@@ -82,28 +78,3 @@ class OptimizationPopulation(AbstractPopulation):
 
         self.pool = np.random.uniform(self.low_boundery, self.high_boundery,
                                       (self.n_pool, self.n_genes))
-
-
-    def parent_selection(self, fitness: np.array) -> None:
-
-        fit_idx = np.argsort(fitness)[::-1]
-
-        self.parents = self.pool[fit_idx[:self.n_parents]]
-
-    def breed_childern(self) -> None:
-
-        for i in range(self.n_pool // 2):
-            first_chromo = self.parents[np.random.choice(range(
-                self.n_parents))]
-            second_chromo = self.parents[np.random.choice(range(
-                self.n_parents))]
-
-            first_child, second_child = self.crossover(first_chromo,
-                                                       second_chromo)
-
-            self.mutation(first_child)
-            self.mutation(second_child)
-
-            self.pool[i:i + 2] = [first_child, second_child]
-
-        self.pool[-1] = self.parents[0]
