@@ -20,11 +20,12 @@ class GA:
                  n_genes: int = 6,
                  n_pool: int = 100,
                  n_parents: int = 25,
-                 low_boundery: int = -2,
-                 high_boundery: int = 5,
+                 low_boundery: int = 0,
+                 high_boundery: int = 0,
                  mutation_prop: float = 0.3,
                  crossover_type: str = "single_point",
-                 mutation_type: str = "random_resetting") -> None:
+                 mutation_type: str = "random_resetting",
+                 population_type:str = "optimization") -> None:
 
         self.n_gnerations = n_generations
         self.fitness_function = fitness_function
@@ -37,7 +38,8 @@ class GA:
                                                  mutation_prop=mutation_prop,
                                                  crossover_type=crossover_type,
                                                  mutation_type=mutation_type,
-                                                 population_type="optimization")
+                                                 population_type=population_type)
+        
 
     def fitness_computation(self) -> None:
 
