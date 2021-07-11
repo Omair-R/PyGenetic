@@ -1,10 +1,8 @@
 import numpy as np
 
-from PyGenetic.abstracts import *
-
-class MutationDecidor(AbstractedDecidor):
+class MutationDecidor:
     def __init__(self, mutation_type, n_genes, mutation_propability,
-                 low_boundery, high_boundery):
+                 low_boundery = 0, high_boundery = 0):
 
         self.mutation_type = mutation_type
         self.n_genes = n_genes

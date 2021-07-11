@@ -1,10 +1,8 @@
 from typing import Tuple
 import numpy as np
 
-from PyGenetic.abstracts import *
 
-
-class CrossoverDecidor(AbstractedDecidor):
+class CrossoverDecidor:
     def __init__(self, crossover_type, n_gene):
         self.crossover_type = crossover_type
         self.n_gene = n_gene
