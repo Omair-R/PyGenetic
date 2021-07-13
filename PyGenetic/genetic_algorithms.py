@@ -17,7 +17,7 @@ class GA:
     
     """
     def __init__(self,
-                 fitness_function: function,
+                 fitness_function,
                  n_generations: int = 50,
                  n_genes: int = 6,
                  n_pool: int = 100,
