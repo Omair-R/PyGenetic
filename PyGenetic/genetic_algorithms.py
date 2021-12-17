@@ -90,7 +90,6 @@ class GA:
             if verbose:
                 update_progress_bar(i, self.n_gnerations)
 
-        print("")
         self.best_chromosome = self.population.parents[0]
 
         return self.best_chromosome, np.max(self.pool_fitness)
