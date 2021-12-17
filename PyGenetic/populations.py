@@ -1,5 +1,5 @@
 import numpy as np
-
+import string
 from PyGenetic.factory import FactoryPopulation
 
 
@@ -61,7 +61,25 @@ class BinaryPopulation(FactoryPopulation):
 
 
 class StringPopulation(FactoryPopulation):
-    pass
+    def __init__(self, n_genes: int, n_pool: int, n_parents: int,
+                 mutation_prop: float, crossover_type: str, mutation_type: str,
+                 low_boundery: int, high_boundery: int) -> None:
+
+        self.n_genes = n_genes
+        self.n_pool = n_pool
+        self.n_parents = n_parents
+        self.low_boundery = low_boundery
+        self.high_boundery = high_boundery
+        self.mutation_propability = mutation_prop
+        self.crossover_type = crossover_type
+        self.mutation_type = mutation_type
+
+        super().__init__()
+        
+        ALPHABET = np.array(list(string.ascii_lowercase + ' '))
+
+        self.pool = np.random.choice(ALPHABET, (self.n_pool, self.n_genes))
+
 
 
 class OptimizationPopulation(FactoryPopulation):
