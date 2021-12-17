@@ -4,29 +4,20 @@ import numpy as np
 
 class CrossoverDecidor:
     def __init__(self, crossover_type, n_gene):
-        self.crossover_type = crossover_type
         self.n_gene = n_gene
+        self.crossover_types_dict: dict = {
+            "single_point": self.single_point,
+            "double_point": self.double_point,
+            "uniform": self.uniform,
+            "order": self.order,
+            "cycle": self.cycle,
+            "Simulated_binary": self.Simulated_binary,
+        }
+        self.crossover_function = self.crossover_types_dict[crossover_type]
 
     def run(self, first_chromo: np.array,
             second_chromo: np.array) -> Tuple[np.array, np.array]:
-
-        if self.crossover_type == "single_point":
-            return self.single_point(first_chromo, second_chromo)
-
-        elif self.crossover_type == "double_point":
-            return self.double_point(first_chromo, second_chromo)
-
-        elif self.crossover_type == "uniform":
-            return self.uniform(first_chromo, second_chromo)
-
-        elif self.crossover_type == "order":
-            return self.order(first_chromo, second_chromo)
-
-        elif self.crossover_type == "cycle":
-            return self.cycle(first_chromo, second_chromo)
-
-        elif self.crossover_type == "Simulated_binary":
-            return self.Simulated_binary(first_chromo, second_chromo)
+        return self.crossover_function(first_chromo, second_chromo)
 
     def single_point(self, first_chromo: np.array,
                      second_chromo: np.array) -> Tuple[np.array, np.array]:
@@ -88,4 +79,3 @@ class CrossoverDecidor:
                          second_chromo: np.array) -> Tuple[np.array, np.array]:
         """ under_construction """
         pass
-

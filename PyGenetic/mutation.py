@@ -1,24 +1,27 @@
 import numpy as np
 
-class MutationDecidor:
-    def __init__(self, mutation_type, n_genes, mutation_propability,
-                 low_boundery = 0, high_boundery = 0):
 
-        self.mutation_type = mutation_type
+class MutationDecidor:
+    def __init__(self,
+                 mutation_type,
+                 n_genes,
+                 mutation_propability,
+                 low_boundery=0,
+                 high_boundery=0):
+
         self.n_genes = n_genes
         self.mutation_propability = mutation_propability
         self.low_boundery = low_boundery
         self.high_boundery = high_boundery
+        self.mutation_types_dict: dict = {
+            "random_resetting": self.random_resetting,
+            "swap": self.swap,
+            "bit_flip": self.bit_flip
+        }
+        self.mutation_function = self.mutation_types_dict[mutation_type]
 
     def run(self, chromosome: np.array) -> None:
-        if self.mutation_type == "random_resetting":
-            self.random_resetting(chromosome)
-
-        elif self.mutation_type == "swap":
-            self.swap(chromosome)
-
-        elif self.mutation_type == "bit_flip":
-            self.bit_flip(chromosome)
+        return self.mutation_function(chromosome)
 
     def random_resetting(self, chromosome: np.array) -> None:
 
@@ -49,4 +52,3 @@ class MutationDecidor:
 
         chance = np.random.uniform(0, 1)
         return True if self.mutation_propability > chance else False
-
